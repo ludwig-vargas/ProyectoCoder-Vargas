@@ -1,0 +1,54 @@
+{% extends 'home/index.html' %}
+{% load static %}
+
+{% block my_blog_title %}Product List{% endblock %}
+
+{% block my_blog_header %}
+<!-- Header-->
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Products</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Products List My Blog</p>
+        </div>
+    </div>
+    <!-- Product actions-->
+    <div class="d-grid gap-2 col-3 mx-auto"><a class="btn btn-outline-secondary" href="{% url 'product:product-add' %}">Nuevo Producto</a></div>
+    
+</header>
+{% endblock %}
+
+{% block my_blog_content %}
+<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+    {% for product in product_list %}
+    <div class="col mb-5">
+        <div class="card h-100">
+            <!-- Product image-->
+            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+            <!-- Product details-->
+            <div class="card-body p-4">
+                <div class="text-center">
+                    <!-- Product name-->
+                    <h2 class="post-title">{{ product.name }}</h2>
+                    <!-- Product price-->
+                    ${{ product.price }}.00
+                    <!-- Product category-->
+                    <h5 class="post-subtitle">{{ product.category }}</h5>
+                    <!-- Product create by-->
+                    <p class="post-meta">
+                        Create by
+                        <a href="#!">Start Boostrap</a>
+                        {{ product.created_at }}
+                    </p>
+                </div>
+            </div>
+            <!-- Product actions-->
+            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    
+</div>
+{% endblock %}
