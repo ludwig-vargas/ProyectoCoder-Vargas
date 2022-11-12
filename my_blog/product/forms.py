@@ -41,7 +41,6 @@ class ProductForm(forms.ModelForm):
         ),     
     )
     
-    
     price = forms.IntegerField(
         label='Precio de Producto:',
         required=False,

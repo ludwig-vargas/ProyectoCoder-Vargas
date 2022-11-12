@@ -1,6 +1,5 @@
-from django.shortcuts import render
 from django.views.generic import ListView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from django.core.exceptions import ValidationError
 from django.urls import reverse_lazy
@@ -49,3 +48,16 @@ class ProductCreateView(CreateView):
             )
             return super().form_valid(form)
 
+#Actualizar
+class ProductUpdateView(UpdateView):
+    model = Product
+    form_class = ProductForm
+
+    def get_success_url(self):
+        product_id = self.kwargs["pk"]
+        return reverse_lazy("product:product-detail", kwargs={"pk": product_id})
+
+#Eliminar
+class ProductDeleteView(DeleteView):
+    model = Product
+    success_url = reverse_lazy('product:product-list')
