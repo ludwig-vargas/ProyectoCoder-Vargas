@@ -2,14 +2,16 @@ from django import forms
 from ckeditor.widgets import CKEditorWidget
 from product.models import Product
 
+CATEGORY = (('Tecnologia','Tecnologia'),('Ropa','Ropa'),('Electrodomesticos','Electrodomesticos'))
+
 class ProductForm(forms.ModelForm):
     name = forms.CharField(
         label='Nombre del Producto:',
         required=False,
         widget=forms.TextInput(
             attrs={
-                'class':'product-name',
-                'placehikder':'Nombre del producto',
+                'class':'form-control',
+                'placeholder':'Nombre del producto',
                 'required':'True',
             }
         ),
@@ -18,34 +20,35 @@ class ProductForm(forms.ModelForm):
     code_product = forms.IntegerField(
         label='Codigo de Producto:',
         required=False,
-        widget=forms.TimeInput(
+        widget=forms.NumberInput(
             attrs={
-                'class':'product-code',
-                'placehikder':'Codigo del producto',
+                'class':'form-control',
+                'placeholder':'Codigo del producto',
                 'required':'True',
             }
         ),
     )
     
-    category = forms.CharField(
-        label='Categoria del Producto:',
+    category = forms.ChoiceField(
+        choices=CATEGORY,
+        label='Categoria',
         required=False,
-        widget=forms.TextInput(
+        widget=forms.Select(
             attrs={
-                'class':'product-category',
-                'placehikder':'NCategoriaombre del producto',
+                'class':'form-control',
                 'required':'True',
             }
-        ),
+        ),     
     )
+    
     
     price = forms.IntegerField(
         label='Precio de Producto:',
         required=False,
-        widget=forms.TimeInput(
+        widget=forms.NumberInput(
             attrs={
-                'class':'price-code',
-                'placehikder':'Precio del producto',
+                'class':'form-control',
+                'placeholder':'Precio del producto',
                 'required':'True',
             }
         ),
@@ -54,10 +57,10 @@ class ProductForm(forms.ModelForm):
     amount = forms.IntegerField(
         label='En existencia:',
         required=False,
-        widget=forms.TimeInput(
+        widget=forms.NumberInput(
             attrs={
-                'class':'amount-code',
-                'placehikder':'Cantidad del producto',
+                'class':'form-control',
+                'placeholder':'Cantidad del producto',
                 'required':'True',
             }
         ),
@@ -68,8 +71,6 @@ class ProductForm(forms.ModelForm):
         required=False,
         widget=CKEditorWidget(
             attrs={
-                'class':'product-description',
-                'placehikder':'Descripcion del producto',
                 'required':'True',
             }
         ),

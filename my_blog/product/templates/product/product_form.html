@@ -25,10 +25,10 @@
 {% block my_blog_content %}
     <div class="col-md-9 offset-md-2">
         <div class="card">
-            <div class="card-body form-control">                
-                <form action="" method="POST">
+            <div class="card-body">                
+                <form method="POST">
                         {% csrf_token %}
-                        {{ form.media }} <!-- ckeditor -->
+                        {{ form.media }} <!-- ckeditor -->                    
                         {{ form.as_p }}
                     <div class="col-4">
                         <input type="submit" class="btn btn-secondary" value="Guardar Producto"/>
@@ -37,5 +37,4 @@
             </div>
         </div>
     </div>
- <hr class="my-4" />
 {% endblock %}

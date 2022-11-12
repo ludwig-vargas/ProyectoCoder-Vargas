@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView
+from django.views.generic.detail import DetailView
 from django.core.exceptions import ValidationError
 from django.urls import reverse_lazy
 from django.contrib import messages
@@ -10,6 +11,11 @@ from product.forms import ProductForm
 
 class ProductListView(ListView):
     model = Product
+    
+#Detalles de Producto
+class ProductDetailView(DetailView):
+    model = Product
+    fields = ['name','code_product','category','price','amount','description']
     
 #Crear Producto
 class ProductCreateView(CreateView):
@@ -42,3 +48,4 @@ class ProductCreateView(CreateView):
                 f"El producto {data['name']} - {data['code_product']} se creo exitosamente!",
             )
             return super().form_valid(form)
+
