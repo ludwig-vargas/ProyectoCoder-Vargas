@@ -52,7 +52,6 @@
                     <h1 class="display-4 fw-bolder">LVGBlog</h1>
                     <p class="lead fw-normal text-white-50 mb-0">Publica y compra productos o servicios!!!</p>
                 </div>
-                
             </div>
         </header>
         {% endblock %} 
@@ -67,13 +66,12 @@
                 <form  action="{% url 'home:search' %}" method="GET">
                     <div class="col-md-5 mx-auto">
                         <div class="input-group">
-                            <input class="form-control border-end-0 border rounded-pill" type="text" name="search_param" placeholder="Buscar..." id="search_code_or_name" 
+                            <h2 class="post-subtitle">Buscador de Productos o Servicios</h2>
+                            <span class="input-group-text purple lighten-3" id="basic-text1"><i class="bi bi-search text-dark"
+                                aria-hidden="true"></i></span>
+                            <input class="form-control bi bi-search" type="text" name="search_param" placeholder="Buscar..." id="search_code_or_name" 
                             {% if search_param %} value = "{{search_param}}" {% endif %}>
-                            <span class="input-group-append">
-                                <a class="btn btn-outline-secondary bg-white border-bottom-0 border rounded-pill ms-n5" href={% url 'home:index' %} >
-                                    <i class="bi bi-search"></i>
-                                </a>
-                            </span>
+
                         </div>
                     </div>
                 </form>
@@ -111,11 +109,6 @@
                         </div>
                     </div>
                     {% endfor %}
-                </div>
-                <hr class="my-4" />
-                {% else %}
-                <div class="post-preview">
-                    <h2 class="post-title">No se encontro ningun producto o servicio</h2>
                 </div>
                 <hr class="my-4" />
                 {% endif %}
