@@ -17,7 +17,7 @@ class ProductForm(forms.ModelForm):
         ),
     )
     
-    code_product = forms.IntegerField(
+    code_product = forms.CharField(
         label='Codigo de Producto:',
         required=False,
         widget=forms.NumberInput(
