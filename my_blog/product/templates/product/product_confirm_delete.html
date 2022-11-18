@@ -35,7 +35,7 @@
             <form method="POST">
                 {% csrf_token %}
                 <div class="card-footer p-4 pt- border-top-0 bg-transparent text-center">
-                    <a class="btn btn-outline-dark me-3" href="{% url 'product:product-detail' product.id %}">Cancelar</a>
+                    <a class="btn btn-outline-dark me-3" onClick="history.go(-1);">Cancelar</a>
                     <input class="btn btn-outline-danger " type="submit" value="Aceptar"></input>
                 </div>
             </form>

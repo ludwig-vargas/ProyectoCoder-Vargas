@@ -34,13 +34,14 @@
                             </ul>
                         </li>
                     </ul> 
-                    <form class="d-flex">
-                        <button class="btn btn-outline-dark" type="submit">
-                            <i class="bi-cart-fill me-1"></i>
-                            Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </button>
-                    </form>
+                    <ul class="nav navbar-nav navbar-right">
+                        {% if user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link active" href="{% url 'logout' %}"><span class="bi bi-box-arrow-in-left"></span> Salir Seción </a></li>
+                        {% else %}
+                        <li class="nav-item"><a class="nav-link active" href="{% url 'home:user-register' %}"><span class="bi bi-person-fill"></span>Registrarse</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="{% url 'login' %}"><span class="bi bi-box-arrow-in-right"></span> Iniciar Seción </a></li>
+                        {% endif %}
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -49,8 +50,13 @@
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
+                    {% if user.is_authenticated %}
+                    <h1 class="display-4 fw-bolder">{{ user.first_name }} {{ user.last_name }}</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">Bienvenido!!!</p>
+                    {% else %}
                     <h1 class="display-4 fw-bolder">LVGBlog</h1>
                     <p class="lead fw-normal text-white-50 mb-0">Publica y compra productos o servicios!!!</p>
+                    {% endif %}
                 </div>
             </div>
         </header>

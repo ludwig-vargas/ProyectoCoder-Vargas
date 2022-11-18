@@ -68,11 +68,7 @@ class ProductForm(forms.ModelForm):
     description = forms.CharField(
         label='Descripcion:',
         required=False,
-        widget=CKEditorWidget(
-            attrs={
-                'required':'True',
-            }
-        ),
+        widget=CKEditorWidget(),
     )
     
     class Meta:

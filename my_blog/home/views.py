@@ -1,6 +1,9 @@
 from django.shortcuts import render
+from django.shortcuts import redirect
+from django.contrib import messages
 from django.db.models import Q
 from product.models import Product
+from home.forms import UserRegisterForm
 
 # Create your views here.
 def index(request):
@@ -28,4 +31,19 @@ def search(request):
         request=request,
         context=context_dict,
         template_name="home/index.html",
+    )
+
+# Registrar nuevo usuario
+def register(request):
+    form = UserRegisterForm(request.POST) if request.POST else UserRegisterForm()
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Usuario creado exitosamente")
+            return redirect("login")
+    
+    return render(
+        request=request,
+        context={"form": form},
+        template_name="registration/registration.html",
     )
