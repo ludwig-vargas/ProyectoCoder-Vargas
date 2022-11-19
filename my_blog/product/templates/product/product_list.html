@@ -36,9 +36,9 @@
                     <h5 class="post-subtitle">{{ product.category }}</h5>
                     <!-- Product create by-->
                     <p class="post-meta">
-                        Create by
-                        <a href="#!">Start Boostrap</a>
-                        {{ product.created_at }}
+                        Creado por:
+                        <span style="color: #0b4956;" href="">{{ product.owner.username }}</span>
+                        ({{ product.created_at }})
                     </p>
                 </div>
             </div>

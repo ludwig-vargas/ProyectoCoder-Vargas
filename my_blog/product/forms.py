@@ -75,4 +75,22 @@ class ProductForm(forms.ModelForm):
         model = Product
         fields = ['name','code_product','category','price','amount','description']
     
-    
+class CommentForm(forms.Form):
+    comment_text = forms.CharField(
+        label="",
+        required=False,
+        max_length=500,
+        min_length=10,
+        strip=True,
+        widget=forms.Textarea(
+            attrs={
+                "class":"form-control",
+                "placeholder":"Ingrese su comentario...",
+                "required":"True",
+                "max_length":"500",
+                "min_length":"10",     
+                "rows":3,
+                "style":"height: 100px",
+            }
+        ),
+    )

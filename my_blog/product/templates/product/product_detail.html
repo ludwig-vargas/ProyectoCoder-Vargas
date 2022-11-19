@@ -26,10 +26,14 @@
         </div>
         <p class="lead">{{ product.description|safe }}</p>
         <p class="post-meta">
-            Update by
-            <a href="#!">Start Boostrap</a>
-            {{ product.updated_at }}
+            Creado por:
+            <span style="color: #0b4956;" href="">{{ product.owner.username }}</span>
+            ({{ product.created_at }})
+            <br>
+            Última actualización ({{ product.updated_at }})
         </p>
+        <!-- Update-Delete link only for the owner -->
+        {% if user == product.owner or user.is_superuser %}
         <div class="d-flex">
             <input class="form-control text-center me-3" id="inputQuantity" type="num" value={{ product.amount }} style="max-width: 3rem" readonly/>
             <a class="btn btn-outline-success btn-lg me-3" href="{% url 'product:product-update' product.id %}">
@@ -41,6 +45,32 @@
                 Eliminar
             </a>
         </div>
+        {% endif %}
+    </div>
+    <!-- Divider -->
+    <div class="my-4"/>
+
+    <div class="card-body">
+    <!-- Comment creation -->
+    <form class="mb-4" method="POST" action="{% url 'product:comment-create' product.id %}">
+        {% csrf_token %}
+        {{ comment_form }}
+        <input type="submit" value="Publicar comentario">
+    </form>
+    {% if not comments %}
+    <p></p>
+    {% endif %}
+
+    <!-- Comments list -->
+    {% for comment in comments %}
+        <div class="d-flex mb-4">
+            <div class="fw-bold">({{ comment.owner.username }} | {{ comment.update_at }})</div>
+            {{ comment.text }}
+            {% if user == comment.owner or user.is_superuser %}
+            <a href="{% url 'product:comment-delete' comment.id %}"><i class="bi bi-x-circle-fill" style="color: #881a1a;"></i></a>
+            {% endif %}
+        </div>
+        {% endfor %}
     </div>
 </div>
 
