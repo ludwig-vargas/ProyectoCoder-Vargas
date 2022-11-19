@@ -15,10 +15,14 @@
 </header>
 {% endblock %}
 
+
 {% block my_blog_content %}
-    <div class="col-md-9 offset-md-2">
-        <div class="card">
-            <div class="card-body">                
+<div class="col-md-9 offset-md-2">
+    <div class="card">
+        <div class="card-body">                
+            {% if form.errors %}
+                <p style="color:red">Combinacion de usuario y contraseña incorrecta, intenta de nuevo.</p>
+            {% endif %}
                 <form method="POST">
                         {% csrf_token %}                    
                         {{ form.as_p }}
