@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'my_blog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'Inventario.db',
+        'NAME': BASE_DIR / 'Inventario.db',
     }
 }
 

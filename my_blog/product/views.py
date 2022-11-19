@@ -16,7 +16,7 @@ class ProductListView(ListView):
 #Detalles de Producto
 class ProductDetailView(DetailView):
     model = Product
-    template_name: "product/product_detail.html"
+    template_name = "product/product_detail.html"
     fields = ['name','code_product','category','price','amount','description']
     
     def get(self, request, pk):

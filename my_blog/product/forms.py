@@ -84,12 +84,12 @@ class CommentForm(forms.Form):
         strip=True,
         widget=forms.Textarea(
             attrs={
-                "class":"form-control",
-                "placeholder":"Ingrese su comentario...",
-                "required":"True",
-                "max_length":"500",
-                "min_length":"10",     
-                "rows":3,
+                "class": "form-control mb-2",
+                "placeholder": "Ingrese su comentario...",
+                "required": "True",
+                "max_length": 500,
+                "min_length": 10,     
+                "rows": 3,
                 "style":"height: 100px",
             }
         ),
