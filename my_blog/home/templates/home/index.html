@@ -36,6 +36,7 @@
                     </ul> 
                     <ul class="nav navbar-nav navbar-right">
                         {% if user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link active" href="{% url 'home:user-update' %}"><span class="bi bi-person-fill"></span> Editar Usuario</a></li>
                         <li class="nav-item"><a class="nav-link active" href="{% url 'logout' %}"><span class="bi bi-box-arrow-in-left"></span> Salir Seción </a></li>
                         {% else %}
                         <li class="nav-item"><a class="nav-link active" href="{% url 'home:user-register' %}"><span class="bi bi-person-fill"></span>Registrarse</a></li>

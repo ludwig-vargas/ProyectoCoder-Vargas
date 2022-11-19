@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
+from django.forms.models import model_to_dict
 from django.contrib import messages
 from django.db.models import Q
 from product.models import Product
-from home.forms import UserRegisterForm
+from home.forms import UserRegisterForm, UserUpdateForm
 
 # Create your views here.
 def index(request):
@@ -46,4 +48,21 @@ def register(request):
         request=request,
         context={"form": form},
         template_name="registration/registration.html",
+    )
+
+# Modificar al usuario
+@login_required
+def user_update(request):
+    user = request.user
+    if request.method == "POST":
+        form = UserUpdateForm(request.POST, instance=request.user)
+        if form.is_valid:
+            form.save()
+            return redirect("home:index")
+    
+    form = UserUpdateForm(model_to_dict(user))
+    return render(
+        request=request,
+        context={"form": form},
+        template_name="registration/user_form.html",
     )
