@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.db.models import Q
 from product.models import Product
 from home.forms import UserRegisterForm, UserUpdateForm
+from django.contrib.auth.models import User
 
 # Create your views here.
 def index(request):
@@ -65,4 +66,16 @@ def user_update(request):
         request=request,
         context={"form": form},
         template_name="registration/user_form.html",
+    )
+
+# Lista de Usuarios
+@login_required
+def user_list(request):
+    users = User.objects.all()
+    context_diac = {"users":users}
+
+    return render(
+        request=request,
+        context=context_diac,
+        template_name="registration/user_list.html",
     )
