@@ -84,7 +84,7 @@ class UserRegisterForm(UserCreationForm):
         ]
         
 class UserUpdateForm(UserChangeForm):
-    password: None
+    password = None
     
     class Meta:
         model = User
@@ -95,7 +95,7 @@ class UserUpdateForm(UserChangeForm):
         ]
         
         widgets = {
-            "email": forms.TextInput(attrs={'class':'form-control', "readonly": "readonly"}),
+            "email": forms.TextInput(attrs={'class':'form-control', "required": "True"}),
             "first_name": forms.TextInput(attrs={'class':'form-control','required':'True',}),
             "last_name": forms.TextInput(attrs={'class':'form-control','required':'True',}),
         }

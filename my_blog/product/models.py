@@ -11,6 +11,7 @@ class Product(models.Model):
     price = models.IntegerField(null=False, blank=False)
     amount = models.IntegerField(null=False, blank=False)
     description = RichTextField(null = True, blank = True)
+    image = models.ImageField(upload_to='product', null=True, blank=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, null = True,)
     comments = models.ManyToManyField(
         User, through="Comment", related_name="comments_owned"

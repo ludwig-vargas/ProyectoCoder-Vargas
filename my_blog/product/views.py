@@ -13,7 +13,7 @@ from product.forms import ProductForm, CommentForm
 class ProductListView(ListView):
     model = Product
     
-#Detalles de Producto
+# Detalles de Producto
 class ProductDetailView(DetailView):
     model = Product
     template_name = "product/product_detail.html"
@@ -30,7 +30,7 @@ class ProductDetailView(DetailView):
         }
         return render(request, self.template_name, context)
     
-#Crear Producto
+# Crear Producto
 class ProductCreateView(LoginRequiredMixin, CreateView):
     model = Product
     #Redirecciona a product_list.html
@@ -71,6 +71,7 @@ class ProductUpdateView(LoginRequiredMixin, UpdateView):
     def get_success_url(self):
         product_id = self.kwargs["pk"]
         return reverse_lazy("product:product-detail", kwargs={"pk": product_id})
+        
 
 #Eliminar
 class ProductDeleteView(LoginRequiredMixin, DeleteView):

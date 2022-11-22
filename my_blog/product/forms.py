@@ -71,9 +71,14 @@ class ProductForm(forms.ModelForm):
         widget=CKEditorWidget(),
     )
     
+    image = forms.ImageField(
+        label='Imagen del Producto:',
+        required=False,
+    )
+    
     class Meta:
         model = Product
-        fields = ['name','code_product','category','price','amount','description']
+        fields = ['name','code_product','category','price','amount','description', 'image']
     
 class CommentForm(forms.Form):
     comment_text = forms.CharField(
