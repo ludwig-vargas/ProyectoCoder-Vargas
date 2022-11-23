@@ -1,0 +1,45 @@
+{% extends 'home/index.html' %}
+{% load static %}
+
+{% block my_blog_title %}Service Delete{% endblock %}
+
+{% block my_blog_header %}
+    <!-- Header-->
+    <header class="bg-dark py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder">Confirmar Accion</h1>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block my_blog_content %}
+<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+    <div class="col mb-5">
+        <div class="card h-100">
+            <!-- Service image-->
+            <img class="card-img-top" src="{{ service.image.url }}" alt="..." />
+            <!-- Service details-->
+            <div class="card-body p-4">
+                <div class="text-center">
+                    <!-- Service name-->
+                    <h2 class="post-title">{{ service.name }}</h2>
+                    <!-- Service price-->
+                    ${{ service.price }}.00
+                    <!-- Service category-->
+                    <h5 class="post-subtitle">{{ service.category }}</h5>
+                </div>
+            </div>
+            <!-- Service actions-->
+            <form method="POST">
+                {% csrf_token %}
+                <div class="card-footer p-4 pt- border-top-0 bg-transparent text-center">
+                    <a class="btn btn-outline-dark me-3" onClick="history.go(-1);">Cancelar</a>
+                    <input class="btn btn-outline-danger " type="submit" value="Aceptar"></input>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

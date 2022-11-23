@@ -7,6 +7,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 
 from product.models import Product
+from service.models import Service
 from django.contrib.auth.models import User
 from home.models import Avatar
 from home.forms import UserRegisterForm, UserUpdateForm
@@ -17,6 +18,14 @@ def get_avatar_url_ctx(request):
     if avatars.exists():
         return {"avatar_url": avatars[0].image.url}
     return {}
+
+# About
+def about(request):
+    return render(
+        request=request,
+        context={},
+        template_name="home/about.html",
+    )
 
 # Create your views here.
 def index(request):
@@ -40,6 +49,17 @@ def search(request):
                 "search_param": search_param,
             }
         )
+        
+    if search_param:
+        query = (Q(name=search_param) | Q(code_service=search_param))
+        services = Service.objects.filter(query)
+        context_dict.update(
+            {
+                "services": services,
+                "search_param": search_param,
+            }
+        )
+        
     return render(
         request=request,
         context=context_dict,

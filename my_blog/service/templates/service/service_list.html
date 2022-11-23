@@ -1,0 +1,58 @@
+{% extends 'home/index.html' %}
+{% load static %}
+
+{% block my_blog_title %}Service List{% endblock %}
+
+{% block my_blog_header %}
+<!-- Header-->
+<header class="py-5 bg-image-full" style="background-image: url('https://source.unsplash.com/wfh8dDlNFOk/1600x900')">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Servicios</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Lista de Servicios</p>
+        </div>
+    </div>
+    <!-- Service actions-->
+    <div class="d-grid gap-2 col-3 mx-auto"><a class="btn btn-outline-secondary" href="{% url 'service:service-add' %}">Nuevo Servicio</a></div>
+    
+</header>
+{% endblock %}
+
+{% block my_blog_content %}
+<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+    {% for service in service_list %}
+    <div class="col mb-5">
+        <div class="card h-100">
+            <!-- Service image-->
+            {% if service.image %}
+            <img class="card-img-top" src="{{ service.image.url }}" alt="..." />
+            {% else %}
+            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+            {% endif %}
+            <!-- Service details-->
+            <div class="card-body p-4">
+                <div class="text-center">
+                    <!-- Service name-->
+                    <h2 class="post-title">{{ service.name }}</h2>
+                    <!-- Service price-->
+                    ${{ service.price }}.00
+                    <!-- Service category-->
+                    <h5 class="post-subtitle">{{ service.category }}</h5>
+                    <!-- Service create by-->
+                    <p class="post-meta">
+                        Creado por:
+                        <span style="color: #0b4956;" href="">{{ service.owner.username }}</span>
+                        ({{ service.created_at }})
+                    </p>
+                </div>
+            </div>
+            <!-- Service actions-->
+            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'service:service-detail' service.id %}">Detalles</a></div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+{% endblock %}
