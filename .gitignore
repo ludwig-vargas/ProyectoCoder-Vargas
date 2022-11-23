@@ -5,10 +5,9 @@ venv/*
 *.pyc
 */__pycache__/
 x_*
-db.sqlite3
+Inventario.db
 static/*
 staticfiles/*
-*/media/*
 
 # vs code files
 .vscode
