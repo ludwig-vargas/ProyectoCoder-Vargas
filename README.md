@@ -17,5 +17,6 @@ python manage.py migrate
 python manage.py createsuperuser
 
 5. Para que las imagenes se guarden en el proyecto en la carpeta de media se crearan dos subcarpetas
-->product
-->service
+media->product
+media->service
+media->avatar
