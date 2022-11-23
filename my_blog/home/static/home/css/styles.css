@@ -11293,3 +11293,11 @@ textarea.form-control-lg {
   background-position: center;
   background-size: cover;
 }
+
+.btn-floating {
+  border-radius: 50%; 
+  position: relative; 
+  padding: 0; 
+  width: 2.8125rem; 
+  height: 2.8125rem;
+}

@@ -7,7 +7,11 @@
 <!-- Header-->
 <header class="py-5 bg-image-full" style="background-image: url('https://source.unsplash.com/wfh8dDlNFOk/1600x900')">
     <div class="my-5 text-center text-white">
-        <img class="img-fluid rounded-circle mb-4" src="https://dummyimage.com/150x150/6c757d/dee2e6.jpg" alt="...">
+        {% if avatar_url %}
+            <a href="{% url 'home:avatar-load' %}"><img class=" rounded-circle mb-4" src="{{avatar_url}}" alt="..."></a>
+        {% else %}
+            <a href="{% url 'home:avatar-load' %}"><img class=" rounded-circle mb-4" src="https://dummyimage.com/150x150/6c757d/dee2e6.jpg" alt="..."></a>
+        {% endif %}
         <h1 class="display-4 fw-bolder">{{user.username}}</h1>
         <p class="lead fw-normal text-white-50 mb-0">LVGBlog</p>
     </div>    
