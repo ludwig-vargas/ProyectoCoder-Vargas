@@ -7,7 +7,7 @@
  <!-- Header - set the background image for the header in the line below-->
  <header class="py-5 bg-image-full" style="background-image: url('https://source.unsplash.com/wfh8dDlNFOk/1600x900')">
     <div class="text-center my-5">
-        <img class="rounded-circle mb-4 img-avatar" src="{% static 'assets/ludwigvaga.jpg' %}" alt="..." />
+        <img class="rounded-circle mb-4 img-avatar" src="{% static 'home/assets/ludwigvaga.jpg' %}" alt="..." />
         <h1 class="text-white fs-3 fw-bolder">I.S.C. Ludwig Vargas Garcia</h1>
         <p class="text-white-50 mb-0">LVGBlog</p>
     </div>
@@ -17,10 +17,16 @@
 {% block my_blog_content %}
         <!-- Content section-->
         <div class="row justify-content-center">
-            <div class="col-lg-6">
-                <h2>Full Width Backgrounds</h2>
-                <p class="lead">A single, lightweight helper class allows you to add engaging, full width background images to sections of your page.</p>
-                <p class="mb-0">The universe is almost 14 billion years old, and, wow! Life had no problem starting here on Earth! I think it would be inexcusably egocentric of us to suggest that we're alone in the universe.</p>
+            <div class="col-lg-8">
+                <h2>Acerca de mi</h2>
+                <p class="mb-3">Hola!!! mi nombre es Ludwig Vargas Garcia, soy originario de Zitácuaro Michoacán México. Soy un gran amante de la música y de la tecnología, siempre procuro estar actualizado en las nuevas tecnologías y lenguajes de programación. Actualmente soy egresado de la carrera de Ingeniería en Sistemas Computacionales del Instituto Tecnológico Superior de Ciudad Hidalgo.</p>
+                <p class="mb-3">Actualmente me encuentro trabajando en la empresa de desarrollo NTTDATA con sede en León Guanajuato y me encuentro residiendo en Puerto Vallarta Jalisco.</p>
+                <h2>Acerca del blog</h2>
+                <p class="mb-3">El desarrollo del blog LVGBlog tiene como finalidad el mostrar productos y servicios que los usuarios ofrezcan, junto con un apartado de mensajería para escribir comentarios, en donde dependiendo el Login realizado se podrá modificar el comentario, como también el crear, editar o eliminar algún producto o servicio creado en ese perfil.</p>
+                <p class="mb-3">También cuenta con la sección de administrador que podrá editar, crear o eliminar productos, servicios y comentarios de los usuarios registrados, además de tener una sección donde se mostrará todos los usuarios registrados dentro de la pagina web, en donde solo el administrador tendrá acceso y podrá eliminar a algún usuario.</p>
+                <p class="mb-3">La página web también cuenta con un buscador en el Index que mostrara algún producto o servicio escribiendo el nombre o su código correspondiente.</p>
+                <p class="mb-3">Este blog se desarrolló con los conocimientos de Python3, Django y Boostrap.</p>
+                <p class="mb-3">¡Espero que sea de su agrado, muchas gracias y hasta pronto…!</p>
             </div>
         </div>
 {% endblock %}

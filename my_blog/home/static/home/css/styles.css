@@ -11306,3 +11306,7 @@ textarea.form-control-lg {
   max-width: 100%;
   height: 260px;
 }
+
+.texto-justificado {
+  text-align: justify;
+}
