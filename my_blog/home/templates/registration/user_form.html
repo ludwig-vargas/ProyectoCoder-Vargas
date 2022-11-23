@@ -6,11 +6,10 @@
 {% block my_blog_header %}
 <!-- Header-->
 <header class="py-5 bg-image-full" style="background-image: url('https://source.unsplash.com/wfh8dDlNFOk/1600x900')">
-    <div class="container px-4 px-lg-5 my-5">
-        <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">Editar Usuario</h1>
-            <p class="lead fw-normal text-white-50 mb-0">LVGBlog</p>
-        </div>
+    <div class="my-5 text-center text-white">
+        <img class="img-fluid rounded-circle mb-4" src="https://dummyimage.com/150x150/6c757d/dee2e6.jpg" alt="...">
+        <h1 class="display-4 fw-bolder">{{user.username}}</h1>
+        <p class="lead fw-normal text-white-50 mb-0">LVGBlog</p>
     </div>    
 </header>
 {% endblock %}
@@ -19,7 +18,6 @@
     <div class="col-md-9 offset-md-2">
         <div class="card">
             <div class="card-body">
-                <h1 class="display-5 fw-bolder">Usuario: {{user.username}}</h1>                
                 <form method="POST">
                         {% csrf_token %}                    
                         {{ form.as_p }}
