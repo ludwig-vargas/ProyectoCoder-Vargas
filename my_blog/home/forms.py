@@ -102,6 +102,12 @@ class UserUpdateForm(UserChangeForm):
         }
 
 class AvatarForm(forms.ModelForm):
+    
+    image = forms.ImageField(
+        label='Imagen Usuario:',
+        required=False,
+    )
+    
     class Meta:
         model = Avatar
         fields = ('image', )

@@ -66,11 +66,8 @@
         <!-- Comments list -->
         {% for comment in comments %}
             <div class="d-flex mt-4">
-                <div class="flex-shrink-0">
-                    <img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg">
-                </div>
                 <div class="ms-3">
-                    <div class="fw-bold">{{ comment.owner.username }} | {{ comment.update_at }}</div>
+                    <div class="fw-bold">{{ comment.owner.username }} | {{ comment.created_at }}</div>
                     {{ comment.text }}
                     {% if user == comment.owner or user.is_superuser %}
                     <a href="{% url 'product:comment-delete' comment.id %}"><i class="bi bi-x-circle-fill" style="color: #881a1a;"></i></a>

@@ -26,15 +26,25 @@
                         <th scope="col">Email Address</th>
                         <th scope="col">First Name</th>
                         <th scope="col">Last Name</th>
+                        <th scope="col">Option</th>
                     </thead>
                     <tbody>
                         {% for u in users %}
-                        <tr>
+                        <tr>{% if forloop.first %}
                             <th scope="row">{{forloop.counter}}</th>
                             <td>{{u.username}}</td>
                             <td>{{u.email}}</td>
                             <td>{{u.first_name}}</td>
                             <td>{{u.last_name}}</td>
+                            <td>admin</td>
+                            {% else %}
+                            <th scope="row">{{forloop.counter}}</th>
+                            <td>{{u.username}}</td>
+                            <td>{{u.email}}</td>
+                            <td>{{u.first_name}}</td>
+                            <td>{{u.last_name}}</td>
+                            <td><a href={% url 'home:user-delete' u.id %} class="btn btn-danger">Eliminar</a></td>
+                            {% endif %}
                         </tr>
                         {% endfor %}
                     </tbody>

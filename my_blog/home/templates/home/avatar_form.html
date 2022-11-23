@@ -16,10 +16,19 @@
 {% endblock %}
 
 {% block my_blog_content %}
-    <h1>Usuario: {{user.username}} | {{user.first_name}} {{user.last_name}}</h1>
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Cargar Imagen</button>
-    </form>
+<div class="col-md-9 offset-md-2">
+    <div class="card">
+        <div class="card-body">
+            <h1>Usuario: {{user.username}} | {{user.first_name}} {{user.last_name}}</h1>
+            <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}                    
+                    {{ form.as_p }}
+                <div class="d-flex">
+                    <button type="submit" class="btn btn-secondary">Cargar Imagen</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+   
 {% endblock %}

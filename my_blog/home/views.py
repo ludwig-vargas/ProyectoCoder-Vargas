@@ -12,11 +12,17 @@ from home.models import Avatar
 from home.forms import UserRegisterForm, UserUpdateForm
 from home.forms import AvatarForm
 
+def get_avatar_url_ctx(request):
+    avatars = Avatar.objects.filter(user=request.user.id)
+    if avatars.exists():
+        return {"avatar_url": avatars[0].image.url}
+    return {}
+
 # Create your views here.
 def index(request):
     return render(
         request=request,
-        context={},
+        context=get_avatar_url_ctx(request),
         template_name="home/index.html",
     )
 
@@ -83,6 +89,30 @@ def user_list(request):
         context=context_diac,
         template_name="registration/user_list.html",
     )
+
+# Eliminar Usuario
+@login_required
+def user_delete(request, pk:int):
+    user = User.objects.get(pk=pk)
+    if request.method == "POST":
+        user.delete()
+        
+        users = User.objects.all()
+        context_diac = {"users":users}
+        
+        return render(
+            request=request,
+            context=context_diac,
+            template_name="registration/user_list.html",
+        )
+    
+    context_diac = {"user":user}
+    return render(
+        request=request,
+        context=context_diac,
+        template_name="registration/user_confirm_delete.html",
+    )
+    
 
 # Cargar imagen para el avatar
 @login_required
